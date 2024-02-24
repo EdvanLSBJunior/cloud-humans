@@ -1,16 +1,13 @@
 package com.example.cloudhuman.services;
 
-import com.example.cloudhuman.enums.Projects;
 import com.example.cloudhuman.exceptions.ProIneligibleException;
 import com.example.cloudhuman.models.Pro;
 import com.example.cloudhuman.models.Project;
 import com.example.cloudhuman.utils.UtilityRules;
-import com.example.cloudhuman.services.Response;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
-//import org.apache.catalina.connector.Response;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -34,7 +31,6 @@ public class ProService {
         if (!UtilityRules.isEligible(pro)) {
             throw new ProIneligibleException("Pro não é elegível devido à idade");
         }
-
         int score = 0;
 
         score += UtilityRules.calculateEducationPoints(pro.getEducationLevel());
@@ -56,16 +52,13 @@ public class ProService {
                 ineligibleProjects.add((String) project.get("name"));
             }
         }
-
         Response response = new Response(
                 score,
                 criticalProject.getName(),
                 eligibleProjects,
                 ineligibleProjects
         );
-//        System.out.println(response);
         return mapper.writeValueAsString(response);
-//        return response.toString();
     }
 
     private Project getCriticalProject(int score) {
