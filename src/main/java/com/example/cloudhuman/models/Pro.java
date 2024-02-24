@@ -20,9 +20,9 @@ public class Pro {
     private PastExperiences pastExperiences;
     @NotNull
     private InternetTest internetTest;
-    @NotNull
-    @DecimalMin(value = "0", inclusive = true)
-    @DecimalMax(value = "1", inclusive = true)
+
+    @DecimalMin(value = "0")
+    @DecimalMax(value = "1")
     private float writingScore;
     private String referralCode;
 }
