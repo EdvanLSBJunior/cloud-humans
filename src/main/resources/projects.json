@@ -1,0 +1,22 @@
+[
+  {
+    "name": "calculate_dark_matter_nasa",
+    "minScore": 10,
+    "description": "Calcular a Matéria Escura do universo para a Nasa"
+  },
+  {
+    "name": "determine_schrodinger_cat_is_alive",
+    "minScore": 5,
+    "description": "Determinar se o gato de Schrodinger está vivo"
+  },
+  {
+    "name": "support_users_from_xyz",
+    "minScore": 3,
+    "description": "Atender ao suporte de usuários para a empresa YXZ"
+  },
+  {
+    "name": "collect_information_for_xpto",
+    "minScore": 2,
+    "description": "Coletar informações específicas das pessoas de suas redes sociais para a empresa XPTO"
+  }
+]

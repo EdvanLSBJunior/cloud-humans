@@ -1,6 +1,5 @@
 package com.example.cloudhuman.models;
 
-import com.example.cloudhuman.enums.EducationLevel;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;

@@ -1,11 +1,9 @@
 package com.example.cloudhuman.controller;
 
-import com.example.cloudhuman.dto.ProDTO;
 import com.example.cloudhuman.models.Pro;
-import com.example.cloudhuman.services.ProjectAssignmentService;
-import org.apache.catalina.connector.Response;
+import com.example.cloudhuman.services.ProService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +12,15 @@ import org.springframework.web.bind.annotation.*;
 public class ProController {
 
     @Autowired
-    private ProjectAssignmentService service;
+    private ProService service;
+
+    @Autowired
+    private ObjectMapper mapper;
 
     @PostMapping(value = "/validate")
-    public ResponseEntity<Response> evaluate(@RequestBody Pro pro) throws Exception {
-        Response response = service.evaluate(pro);
+    public ResponseEntity<String> evaluate(@RequestBody String json) throws Exception {
+        Pro pro =  mapper.readValue(json, Pro.class);
+        String response = service.assignProjectByScore(pro);
         return ResponseEntity.ok(response);
     }
 }

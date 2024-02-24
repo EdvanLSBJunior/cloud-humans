@@ -1,6 +1,6 @@
 package com.example.cloudhuman.dto;
 
-import com.example.cloudhuman.enums.EducationLevel;
+import com.example.cloudhuman.models.EducationLevel;
 import com.example.cloudhuman.models.PastExperiences;
 import com.example.cloudhuman.models.InternetTest;
 import jakarta.validation.constraints.DecimalMax;

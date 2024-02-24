@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public enum Project {
+public enum Projects {
     CALCULATE_DARK_MATTER_NASA(10, "Calcular a Matéria Escura do universo para a Nasa"),
     DETERMINE_SCHRODINGER_CAT_IS_ALIVE(5, "Determinar se o gato de Schrodinger está vivo"),
     SUPPORT_USERS_FROM_XYZ(3, "Atender ao suporte de usuários para a empresa YXZ"),

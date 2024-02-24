@@ -1,20 +1,37 @@
-package com.example.cloudhuman.interfaces.utility;
+package com.example.cloudhuman.utils;
 
-import com.example.cloudhuman.enums.EducationLevel;
+import com.example.cloudhuman.models.EducationLevel;
 import com.example.cloudhuman.models.InternetTest;
 import com.example.cloudhuman.models.PastExperiences;
 import com.example.cloudhuman.models.Pro;
 
-public class Utility {
-    public static int calculateEducationPoints(EducationLevel level) {
-        int points = 0;
-        if ("high_school".equals(level)) {
-            points += 5;
-        } else if ("bachelors_degree_or_high".equals(level)) {
-            points += 3;
-        }
-        return points;
+public class UtilityRules {
+
+    public static boolean isEligible(Pro pro) {
+        return pro.getAge() >= 18;
     }
+
+//    public static int calculateEducationPoints(EducationLevel level) {
+//        int points = 0;
+//        if ("highSchool".equals(level)) {
+//            points += 1;
+//        } else if ("bachelors_degree_or_high".equals(level)) {
+//            points += 2;
+//        }
+//        return points;
+//    }
+public static int calculateEducationPoints(EducationLevel educationLevel) {
+    int points = 0;
+
+    if (educationLevel.isNoEducation()) {
+        points = 0;
+    } else if (educationLevel.isHighSchool()) {
+        points = 1;
+    } else if (educationLevel.isBachelorsDegreeOrHigh()) {
+        points = 2;
+    }
+    return points;
+}
 
     public static int calculateExperiencePoints(PastExperiences pastExperiences) {
         int points = 0;
@@ -44,13 +61,13 @@ public class Utility {
         return points;
     }
 
-    public static int calculatePointsOfWriting(Pro pro) {
+    public static int calculatePointsOfWriting(float writingScore) {
         int points = 0;
-        if (pro.getWritingScore() > 0.7) {
+        if (writingScore > 0.7) {
             points += 2;
-        } else if (pro.getWritingScore() >= 0.3 && pro.getWritingScore() <= 0.7) {
+        } else if (writingScore >= 0.3 && writingScore <= 0.7) {
             points++;
-        } else if (pro.getWritingScore() < 0.3) {
+        } else if (writingScore < 0.3) {
             points--;
         }
         return points;
@@ -60,8 +77,8 @@ public class Utility {
         return "token1234".equals(code);
     }
 
-    public static int claculatePointsForReferralCode(Pro pro) {
-        if (validateReferralCode(pro.getReferralCode())) {
+    public static int calculatePointsForReferralCode(String referralCode) {
+        if (validateReferralCode(referralCode)) {
             return 1;
         }
         return 0;
