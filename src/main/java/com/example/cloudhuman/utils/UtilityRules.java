@@ -11,18 +11,18 @@ public class UtilityRules {
         return pro.getAge() >= 18;
     }
 
-public static int calculateEducationPoints(EducationLevel educationLevel) {
-    int points;
+    public static int calculateEducationPoints(EducationLevel educationLevel) {
+        int points;
 
-    if (educationLevel.isHighSchool()) {
-        points = 1;
-    } else if (educationLevel.isBachelorsDegreeOrHigh()) {
-        points = 2;
-    } else {
-        points = 0;
+        if (educationLevel.isHighSchool()) {
+            points = 1;
+        } else if (educationLevel.isBachelorsDegreeOrHigh()) {
+            points = 2;
+        } else {
+            points = 0;
+        }
+        return points;
     }
-    return points;
-}
 
     public static int calculateExperiencePoints(PastExperiences pastExperiences) {
         int points;
@@ -44,8 +44,7 @@ public static int calculateEducationPoints(EducationLevel educationLevel) {
             points++;
         } else if (internetTest.getDownloadSpeed() < 5) {
             points--;
-        }
-        else if (internetTest.getUploadSpeed() > 50) {
+        } else if (internetTest.getUploadSpeed() > 50) {
             points++;
         } else if (internetTest.getUploadSpeed() < 5) {
             points--;
