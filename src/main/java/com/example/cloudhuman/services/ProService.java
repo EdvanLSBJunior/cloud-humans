@@ -36,7 +36,7 @@ public class ProService {
     public String assignProjectByScore(Pro pro) throws JsonProcessingException {
         this.validateFieldWritingScore(pro);
         if (!UtilityRules.isEligible(pro)) {
-            throw new ProIneligibleException("Pro não é elegível devido à idade");
+            throw new ProIneligibleException("Pro is not eligible due to age");
         }
         int score = 0;
 
