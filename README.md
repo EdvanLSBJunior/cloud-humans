@@ -55,3 +55,22 @@ Cloud Humans is an application that helps in selecting the ideal project for new
   mvn spring-boot:run
 
 ```
+- json structure for testing via Postman or Insomnia
+- Endpoint:
+  http://localhost:8080/pro/validate
+```
+{
+"age": 30,
+"education_level": "bachelors_degree_or_high",
+"past_experiences": {
+"sales": true,
+"support": false
+},
+"internet_test": {
+"download_speed": 55,
+"upload_speed": 55
+},
+"writing_score": 3,
+"referral_code": "token1234"
+}
+```
