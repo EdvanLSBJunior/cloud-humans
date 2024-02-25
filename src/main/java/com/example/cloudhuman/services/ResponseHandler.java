@@ -9,13 +9,19 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class Response {
+public class ResponseHandler {
     private int score;
     private String selectedProject;
     private List<String> eligibleProjects;
     private List<String> ineligibleProjects;
+
+    public ResponseHandler(int score, String selectedProject, List<String> eligibleProjects, List<String> ineligibleProjects) {
+        this.score = score;
+        this.selectedProject = selectedProject;
+        this.eligibleProjects = eligibleProjects;
+        this.ineligibleProjects = ineligibleProjects;
+    }
 
     @Override
     public String toString() {
