@@ -1,5 +1,6 @@
 package com.example.cloudhuman.services;
 
+import com.example.cloudhuman.exceptions.InvalidWritingScoreException;
 import com.example.cloudhuman.exceptions.ProIneligibleException;
 import com.example.cloudhuman.models.Pro;
 import com.example.cloudhuman.models.Project;
@@ -21,6 +22,11 @@ public class ProService {
 
     private ObjectMapper mapper = new ObjectMapper();
     private List<Map<String, Object>> projects;
+
+    public ProService(List<Map<String, Object>> projects) {
+        this.projects = projects;
+    }
+
     @PostConstruct
     public void init() throws IOException {
         InputStream inputStream = this.getClass().getResourceAsStream("/projects.json");
@@ -28,6 +34,7 @@ public class ProService {
     }
 
     public String assignProjectByScore(Pro pro) throws JsonProcessingException {
+        this.validateFieldWritingScore(pro);
         if (!UtilityRules.isEligible(pro)) {
             throw new ProIneligibleException("Pro não é elegível devido à idade");
         }
@@ -52,7 +59,7 @@ public class ProService {
                 ineligibleProjects.add((String) project.get("name"));
             }
         }
-        Response response = new Response(
+        ResponseHandler response = new ResponseHandler(
                 score,
                 criticalProject.getName(),
                 eligibleProjects,
@@ -68,6 +75,14 @@ public class ProService {
                 String name = (String) project.get("name");
                 return new Project(name, minScore);
             }
+        }
+        return null;
+    }
+
+    private String validateFieldWritingScore(Pro pro) {
+        float writingScore = pro.getWritingScore();
+        if (writingScore < 0 || writingScore > 1) {
+            throw new InvalidWritingScoreException("writing_score must be between 0 and 1");
         }
         return null;
     }
