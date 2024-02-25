@@ -25,14 +25,14 @@ public class UtilityRules {
     }
 
     public static int calculateExperiencePoints(PastExperiences pastExperiences) {
-        int points;
+        int points = 0;
 
-        if (pastExperiences.isSales()) {
+        if (pastExperiences.isSales() && pastExperiences.isSupport()) {
+            points = 8;
+        } else if (pastExperiences.isSales()) {
             points = 5;
         } else if (pastExperiences.isSupport()) {
             points = 3;
-        } else {
-            points = 0;
         }
         return points;
     }
